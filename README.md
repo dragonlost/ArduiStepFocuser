@@ -13,7 +13,14 @@ Le Github commence avec la version 0.7.5 du code ArduiStepFocuser.
 
 # PCB et liste des composants :
 
-# Développements futures
+Le nouveaux PCB et le schema est dévellopé sur la platforme EasyEDA.
+Lien du projet :
+
+https://easyeda.com/dragonlost/ArduiStepFocuser-05782649d5d647508e7d01ccf179df9b
+
+La liste des composants est sous forme de classeur ODS (libreoffice) avec les reference constructeur ainsi que les référence Digikey et Mouser.
+
+# Développements futures :
 - support de la carte Wemos D1 Mini
 - support d'un écran OLED
 - support des drivers TMC2100 et TMC2130 en SPI
