@@ -16,12 +16,13 @@ Le Github commence avec la version 0.7.5 du code ArduiStepFocuser.
 # Développements futures
 - support de la carte Wemos D1 Mini
 - support d'un écran OLED
+- support des drivers TMC2100 et TMC2130 en SPI
 
 # Description des branches :
-master = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton + fin de course)
-dev = branche master en développement
-dev-oled = remplacement du LCD 20x04 par un écran OLED monochrome.
-dev-oled+wemos = remplacement du LCD 20x04 par un écran OLED monochrome et remplecement de l'arduino Nano par un Wemos
-dev-html = dévellopement de la page html du Weemos
-dev-TMC2100 = branche Master avec DRV8825 remplacé par un driveur TMC2100
-dev-TMC2130 = branche Master avec DRV8825 remplacé par un driveur TMC2130-SPI
+- master = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton + fin de course).
+- dev = branche master en développement.
+- dev-oled = remplacement du LCD 20x04 par un écran OLED monochrome.
+- dev-oled+wemos = remplacement du LCD 20x04 par un écran OLED monochrome et remplecement de l'arduino Nano par un Wemos.
+- dev-html = dévellopement de la page html du Wemos.
+- dev-TMC2100 = branche Master avec DRV8825 remplacé par un driveur TMC2100.
+- dev-TMC2130 = branche Master avec DRV8825 remplacé par un driveur TMC2130-SPI.
