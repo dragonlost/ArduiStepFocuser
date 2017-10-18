@@ -18,7 +18,7 @@ Lien du projet :
 
 https://easyeda.com/dragonlost/ArduiStepFocuser-05782649d5d647508e7d01ccf179df9b
 
-La liste des composants est sous forme de classeur ODS (libreoffice) avec les reference constructeur ainsi que les référence Digikey et Mouser.
+La liste des composants est sous forme de classeur ODS (libreoffice) avec les references constructeurs ainsi que les références Digikey et Mouser.
 
 # Développements futures :
 - support de la carte Wemos D1 Mini
