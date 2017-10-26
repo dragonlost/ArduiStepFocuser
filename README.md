@@ -8,8 +8,10 @@ Le programme de l'arduino a été ré-écrit dans sa grande majorité, mais les 
 Le Github commence avec la version 0.7.5 du code ArduiStepFocuser.
 
 # Développeurs :
+Gandalf (WebAstro) - Développeur Principal, Etmay53 (Webastro) - Testeur, Dragonlost (WebAstro/GitHub) - Mise en ligne
 
 # Documentation : 
+https://github.com/dragonlost/ArduiStepFocuser/raw/master/ArduitStepFocuser.pdf
 
 # PCB et liste des composants :
 
@@ -20,11 +22,10 @@ https://easyeda.com/dragonlost/ArduiStepFocuser-05782649d5d647508e7d01ccf179df9b
 
 La liste des composants est sous forme de classeur ODS (libreoffice) avec les references constructeurs ainsi que les références Digikey et Mouser.
 
-# Vidéo :
-vidéo de Eric (etmay53)
+# Vidéos :
+vidéo de Etmay53 (WebAstro)
 
 https://www.youtube.com/watch?v=-dUdCSXep7k
-
 
 
 # Développements futures :

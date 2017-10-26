@@ -1,5 +1,8 @@
-
-  
+// Date : 26/10/2017
+// Developeur 
+// ---------------
+// Gandalf - WebAstro
+//
 // ArduiStepFocus
 // ---------------
 // Version 0.7.5
