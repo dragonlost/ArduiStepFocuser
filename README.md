@@ -11,7 +11,7 @@ Le Github commence avec la version 0.7.5 du code ArduiStepFocuser.
 Gandalf (WebAstro) - Développeur Principal, Etmay53 (Webastro) - Testeur, Dragonlost (WebAstro/GitHub) - Mise en ligne
 
 # Documentation : 
-https://github.com/dragonlost/ArduiStepFocuser/raw/master/ArduitStepFocuser.pdf
+https://github.com/dragonlost/ArduiStepFocuser/raw/master/Documentations/ArduitStepFocuser.pdf
 
 # Prérequi : 
 
@@ -19,7 +19,7 @@ https://github.com/dragonlost/ArduiStepFocuser/raw/master/ArduitStepFocuser.pdf
 - Bibliothéque Arduino : DallasTemperature, TimerOne, OneWire, LiquidCrystal I2C (Frank de Brabander)
 
 Tuto d'installation :
-https://github.com/dragonlost/ArduiStepFocuser/raw/master/Tuto_biblio_arduino.pdf
+https://github.com/dragonlost/ArduiStepFocuser/raw/master/Documentations/Tuto_biblio_arduino.pdf
 
 # PCB et liste des composants :
 
