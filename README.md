@@ -13,6 +13,14 @@ Gandalf (WebAstro) - Développeur Principal, Etmay53 (Webastro) - Testeur, Drago
 # Documentation : 
 https://github.com/dragonlost/ArduiStepFocuser/raw/master/ArduitStepFocuser.pdf
 
+# Prérequi : 
+
+- Arduino IDE 1.8.5
+- Bibliothéque Arduino : DallasTemperature, TimerOne, OneWire, LiquidCrystal I2C (Frank de Brabander)
+
+Tuto d'installation :
+https://github.com/dragonlost/ArduiStepFocuser/raw/master/Tuto_biblio_arduino.pdf
+
 # PCB et liste des composants :
 
 Le nouveaux PCB et le schema est dévellopé sur la platforme EasyEDA.
@@ -34,7 +42,8 @@ https://www.youtube.com/watch?v=-dUdCSXep7k
 - support des drivers TMC2100 et TMC2130 en SPI
 
 # Description des branches :
-- master = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton + fin de course).
+- master = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton analogique + fin de course).
+- master-TOR = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton numerique + fin de course).
 - dev = branche master en développement.
 - dev-oled = remplacement du LCD 20x04 par un écran OLED monochrome.
 - dev-oled+wemos = remplacement du LCD 20x04 par un écran OLED monochrome et remplecement de l'arduino Nano par un Wemos.
