@@ -60,6 +60,7 @@
  * FG   Focuser GOTO                                          Démarre le moteur vers la position cible
  * FQ   Focuser Quiet                                         Stop la rotation du moteur, la position courante devient la position cible
  * PH   Position Home                                         Retour du focuser à sa position "Home"
+ * FM   Temp Unit                                             Renvoie l'unité pour la temperature
  * +                                                          Active la compensation automatique de température
  * -                                                          Désactive la compensation automatique de température
  * ** PARAMETRAGES
@@ -2043,6 +2044,16 @@ void ProcessCommand()
       MotorHalt();
       break;
     } // case ('F'*256+'Q'):
+    // Commande FM = Temp Unit
+    case ('F'*256+'M'): // renvoie l'unité de température (Celsius=0, Fahrenheit=1)
+    {
+      //if (myfocuser.tempmode == true)  // when true display is in celsius
+      if (true) // renvoi toujours celsius
+        Serial.print("0#");
+      else
+        Serial.print("1#");
+      break;
+    } // case ('F'*256+'M'):
     // Commande PH = Position Home
     case ('P'*256+'H'): // Moteur va en position repos, Codé en dur
     {                   // ignore les Parametres (Non driver INDI)
