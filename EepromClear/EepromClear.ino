@@ -1,39 +1,40 @@
 /*
  * EEPROM Clear
  *
- * Sets all of the bytes of the EEPROM to 0.
- * Please see eeprom_iteration for a more in depth
- * look at how to traverse the EEPROM.
+ * Réinitialisation de tout les bytes de l'EEPROM à 0.
+ * S'il vous plait regarder la variable eeprom_iteration pour une profondeur plus grande
+ * Regardez comment parcourir l'EEPROM.
  *
- * This example code is in the public domain.
+ * Ce code d'exemple est dans le domaine publique. 
  */
 
 #include <EEPROM.h>
 
 void setup() {
-  // initialize the LED pin as an output.
+  // initialise la pin de la LED pin en mode output.
   pinMode(13, OUTPUT);
+  // Passe la LED OFF en début d'opération.
+  digitalWrite(13, LOW);
   
   /***
-    Iterate through each byte of the EEPROM storage.
+    Itére à travers chaque octet de la mémoire de l'EEPROM.
 
-    Larger AVR processors have larger EEPROM sizes, E.g:
-    - Arduno Duemilanove: 512b EEPROM storage.
-    - Arduino Uno:        1kb EEPROM storage.
-    - Arduino Mega:       4kb EEPROM storage.
+    Les microcontroleurs AVR plus gros ont des tailles d'EEPROM plus grandes, par exemple:
+    - Arduno Duemilanove: stockage EEPROM 512b.
+    - Arduino Uno/Nano: stockage EEPROM 1kb.
+    - Arduino Mega: stockage EEPROM 4kb.
 
-    Rather than hard-coding the length, you should use the pre-provided length function.
-    This will make your code portable to all AVR processors.
+    Le code est écrit pour s'adapater automatiquement à la taille de l'EEPROM des microcontroleurs AVR
   ***/
 
   for (int i = 0 ; i < EEPROM.length() ; i++) {
     EEPROM.write(i, 0);
   }
 
-  // turn the LED on when we're done
+  // Passe la LED ON quand l'opération est fini.
   digitalWrite(13, HIGH);
 }
 
 void loop() {
-  /** Empty loop. **/
+  /** boucle vide. **/
 }

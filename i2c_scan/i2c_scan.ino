@@ -21,7 +21,8 @@
     //    A sensor seems to use address 120.
     // Version 6, November 27, 2015.
     //    Added waiting for the Leonardo serial communication.
-    //
+    // Version 6 FR, 26 Decembre 2017.
+    //    Traduction des messages sur le port serie. 
     //
     // This sketch tests the standard 7-bit addresses
     // Devices with higher bit address might not be seen properly.
@@ -45,7 +46,7 @@
       byte error, address;
       int nDevices;
      
-      Serial.println("Scanning...");
+      Serial.println("Scan en cours...");
      
       nDevices = 0;
       for(address = 1; address < 127; address++ )
@@ -58,7 +59,7 @@
      
         if (error == 0)
         {
-          Serial.print("I2C device found at address 0x");
+          Serial.print("Peripherique I2C trouvé à l'adresse 0x");
           if (address<16)
             Serial.print("0");
           Serial.print(address,HEX);
@@ -68,16 +69,16 @@
         }
         else if (error==4)
         {
-          Serial.print("Unknow error at address 0x");
+          Serial.print("Erreur à l'adresse 0x");
           if (address<16)
             Serial.print("0");
           Serial.println(address,HEX);
         }    
       }
       if (nDevices == 0)
-        Serial.println("No I2C devices found\n");
+        Serial.println("Aucun peripherique I2C trouvé\n");
       else
-        Serial.println("done\n");
+        Serial.println("fin\n");
      
       delay(5000);           // wait 5 seconds for next scan
     }

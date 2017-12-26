@@ -1,82 +1,87 @@
-// Date : 26/10/2017
-// Developeur 
-// ---------------
-// Gandalf - WebAstro
-//
-// ArduiStepFocus
-// ---------------
-// Version 0.7.5
-//
-// Basé sur la version DRV8825_HW203_F Ver1.51 du projet Arduino Focuser MyFocuser
-//
-// COMPATIBLE avec le driver ASCOM de ce projet, avec MyFocuserWinApp, avec le logiciel
-// Moonlite
-//
-// PRESENTATION AFFICHEUR:
-//  ____________________
-//
-// GESTION DES BOUTONS
-// Normale:
-// NOSWITCH  = 0 = SW2 OFF et SW1 OFF : aucune action
-// SWEXTRA   = 1 = SW2 OFF et SW1 ON  : "+", Focus Out (déplacement vers extrafocale pour un crayford, MAP vers distances courtes pour un objectif)
-// SWINTRA   = 2 = SW2 ON  et SW1 OFF : "-", Focus In (déplacement vers intra-focale pour un crayford, MAP vers infini pour un objectif)
-// ALLSWITCH = 3 = SW2 ON and SW1 ON  : entre dans le menu
-//
-// Menu:
-// NOSWITCH  = 0 = SW2 OFF et SW1 OFF : aucune action
-// SWPLUS    = 1 = SW2 OFF et SW1 ON  : Change le menu/choix
-// SWVALID   = 2 = SW2 ON  et SW1 OFF : Valide le menu/choix
-// ALLSWITCH = 3 = SW2 ON and SW1 ON  : aucune action
-//
-// COMMANDES PORT SERIE
-// Cmd  Signification           MyFocuser   INDY (Moonlite)   Objet
-// ************************************************************************************************************************************
-// ** REQUETES
-// GP   Get Position                                          Retourne la position courante du moteur
-// GI   Get full In position                                  Le moteur tourne-t-il?
-// GN   Get New target position                               Retourne la position cible
-// GH   Get Half step                                         Rotation par 1/2 pas selectionnée?
-// GS   Get Scale                                             Renvoie le mode micro-pas utilisé
-// GT   Get Temperature                                       Renvoie la température corrigée de l'offset
-// GZ   Get temp. offset Zero                                 Renvoie la température sans offset
-// GV   Get Version                                           Renvoie la version du programme
-// GF   Get Firmware                                          Renvoie la version du firmware (figé)
-// GD   Get current step Delay                                Non utilisé
-// GC   Get temp. Coefficient                                 Non utilisé
-// GM   Get MaxSteps                                          Renvoie la position limite du moteur
-// GY   Get MaxIncrement                                      Renvoie l'incrément maximum autorisé pour le changement de position
-// GO   Get the CoilPwr setting                               Renvoie si les bobines du moteur restent alimentée entre 2pas
-// GR   Get Reverse direction                                 Renvoie si l'inversion du sens de rotation est selectionné
-// DG   Get Display status                                    Renvoie si l'afficheur est Eteint/Allumé
-// GE   Get TempWaitDelay setting                             Renvoie le delai minimum entre 2 acquisitions successive de température
-// GB   Get LED Backlight value                               Renvoie toujours "00"
-// XY   Mode débugage                                         Récupères les variables pour le monitorer
-// ** COMMANDES
-// FG   Focuser GOTO                                          Démarre le moteur vers la position cible
-// FQ   Focuser Quiet                                         Stop la rotation du moteur, la position courante devient la position cible
-// PH   Position Home                                         Retour du focuser à sa position "Home"
-// +                                                          Active la compensation automatique de température
-// -                                                          Désactive la compensation automatique de température
-// ** PARAMETRAGES
-// SF   Set motor Full step                                   Rotation par pas entiers
-// SH   Set motor Half step                                   Rotation par 1/2 pas
-// SS   Set motor step Scale                                  Paramétrage du mode micro-pas
-// SP   Set Position                                          Paramètre la position courante du moteur à une valeur arbitraire
-// SN   Set New target position                               Paramétrage de la position cible (ne démarre pas le moteur)
-// SD   Set step Delay                                        Non utilisé
-// SC   Set temp. Coefficient                                 Non utilisé
-// PO   temp. Offset Parameter                                Paramètre l'offset de empérature par pas de 0.5° entre -3°..+3°
-// SM   Set new MaxSteps position                             Définit une nouvelle limite supérieure du moteur
-// SY   Set MaxIncrement                                      Paramètre l'incrément max autorisé pour les changements de position, Ignoré
-// SO   Set the CoilPwr setting                               Paramètre si les bobines du moteur restent alimentée entre 2pas
-// SR   Set Reverse direction                                 Règle l'inversion du sens de rotation
-// MS   Set MotorSpeed                                        Delais entre 2 impulsions successives en ms
-// DS   Display Status                                        Eteint/Allume l'afficheur
-// SU   Set display Update                                    Autorise ou pas la mise à jour de l'afficheur quand le moteur tourne
-// SE   Set TempWaitDelay setting                             Règle le delai minimum entre 2 acquisitions successive de température
-// DM   Display temp. mesurement                              Règle l'affichage en °C ou °F
-// XZ   reset valeur usine
-
+/* Date : 26/10/2017 
+ *  
+ *  Developeur 
+ * ---------------
+ * Gandalf - WebAstro
+ * Dragonlost - Webastro/Github
+ *
+ * ArduiStepFocus
+ * ---------------
+ * Version 0.7.5
+ * Basé sur la version DRV8825_HW203_F Ver1.51 du projet Arduino Focuser MyFocuser
+ * COMPATIBLE avec le driver ASCOM DRO 6.2.0 et le logiciel Moonlite (Single Channel Controller) 1.4.
+ *
+ * Version 0.7.6
+ * Evolution du code pour être de nouveau compatible avec avec la version DRV8825_HW203_F Ver1.70
+ * Rétrocompatible avec le logiciel et le driver ASCOM DRo Moonlite
+ * Compatique avec le driver ASCOM myFocuserASCOM1Setup1606 et le logiciel myFocusrProL_1_0_2_7
+ *
+ *
+ * PRESENTATION AFFICHEUR:
+ *  ____________________
+ *
+ * GESTION DES BOUTONS
+ * Normale:
+ * NOSWITCH  = 0 = SW2 OFF et SW1 OFF : aucune action
+ * SWEXTRA   = 1 = SW2 OFF et SW1 ON  : "+", Focus Out (déplacement vers extrafocale pour un crayford, MAP vers distances courtes pour un objectif)
+ * SWINTRA   = 2 = SW2 ON  et SW1 OFF : "-", Focus In (déplacement vers intra-focale pour un crayford, MAP vers infini pour un objectif)
+ * ALLSWITCH = 3 = SW2 ON and SW1 ON  : entre dans le menu
+ *
+ * Menu:
+ * NOSWITCH  = 0 = SW2 OFF et SW1 OFF : aucune action
+ * SWPLUS    = 1 = SW2 OFF et SW1 ON  : Change le menu/choix
+ * SWVALID   = 2 = SW2 ON  et SW1 OFF : Valide le menu/choix
+ * ALLSWITCH = 3 = SW2 ON and SW1 ON  : aucune action
+ *
+ * COMMANDES PORT SERIE
+ * Cmd  Signification           MyFocuser   INDY (Moonlite)   Objet
+ * ************************************************************************************************************************************
+ * ** REQUETES
+ * GP   Get Position                                          Retourne la position courante du moteur
+ * GI   Get full In position                                  Le moteur tourne-t-il?
+ * GN   Get New target position                               Retourne la position cible
+ * GH   Get Half step                                         Rotation par 1/2 pas selectionnée?
+ * GS   Get Scale                                             Renvoie le mode micro-pas utilisé
+ * GT   Get Temperature                                       Renvoie la température corrigée de l'offset
+ * GZ   Get temp. offset Zero                                 Renvoie la température sans offset
+ * GV   Get Version                                           Renvoie la version du programme
+ * GF   Get Firmware                                          Renvoie la version du firmware (figé)
+ * GD   Get current step Delay                                Renvoie le delay actuel du moteur (Non utilisé)
+ * GC   Get temp. Coefficient                                 Non utilisé
+ * GM   Get MaxSteps                                          Renvoie la position limite du moteur
+ * GY   Get MaxIncrement                                      Renvoie l'incrément maximum autorisé pour le changement de position
+ * GO   Get the CoilPwr setting                               Renvoie si les bobines du moteur restent alimentée entre 2pas
+ * GR   Get Reverse direction                                 Renvoie si l'inversion du sens de rotation est selectionné
+ * DG   Get Display status                                    Renvoie si l'afficheur est Eteint/Allumé
+ * GE   Get TempWaitDelay setting                             Renvoie le delai minimum entre 2 acquisitions successive de température
+ * GB   Get LED Backlight value                               Renvoie toujours "00"
+ * XY   Mode débugage                                         Récupères les variables pour le monitorer
+ * ** COMMANDES
+ * FG   Focuser GOTO                                          Démarre le moteur vers la position cible
+ * FQ   Focuser Quiet                                         Stop la rotation du moteur, la position courante devient la position cible
+ * PH   Position Home                                         Retour du focuser à sa position "Home"
+ * +                                                          Active la compensation automatique de température
+ * -                                                          Désactive la compensation automatique de température
+ * ** PARAMETRAGES
+ * SF   Set motor Full step                                   Rotation par pas entiers
+ * SH   Set motor Half step                                   Rotation par 1/2 pas
+ * SS   Set motor step Scale                                  Paramétrage du mode micro-pas
+ * SP   Set Position                                          Paramètre la position courante du moteur à une valeur arbitraire
+ * SN   Set New target position                               Paramétrage de la position cible (ne démarre pas le moteur)
+ * SD   Set step Delay                                        Non utilisé
+ * SC   Set temp. Coefficient                                 Non utilisé
+ * PO   temp. Offset Parameter                                Paramètre l'offset de empérature par pas de 0.5° entre -3°..+3°
+ * SM   Set new MaxSteps position                             Définit une nouvelle limite supérieure du moteur
+ * SY   Set MaxIncrement                                      Paramètre l'incrément max autorisé pour les changements de position, Ignoré
+ * SO   Set the CoilPwr setting                               Paramètre si les bobines du moteur restent alimentée entre 2pas
+ * SR   Set Reverse direction                                 Règle l'inversion du sens de rotation
+ * MS   Set MotorSpeed                                        Delais entre 2 impulsions successives en ms
+ * DS   Display Status                                        Eteint/Allume l'afficheur
+ * SU   Set display Update                                    Autorise ou pas la mise à jour de l'afficheur quand le moteur tourne
+ * SE   Set TempWaitDelay setting                             Règle le delai minimum entre 2 acquisitions successive de température
+ * DM   Display temp. mesurement                              Règle l'affichage en °C ou °F
+ * XZ   reset valeur usine
+ */
 //*************************************************************************//
 //*************************************************************************//
 //***                     DECLARATION DES LIBRAIRIES                    ***//
@@ -99,7 +104,8 @@
 
 // Affiché au BOOT sur le LCD
 const String ProgramName = "ArduiStepFocus";// Nom du programme
-const String ProgramVersion = "Ver 0.7.5";// Version du programme
+const String ProgramVersion = "Ver 0.7.6";// Version du programme
+
 
 //*************************************************************************//
 //*************************************************************************//
@@ -175,6 +181,7 @@ const String ProgramVersion = "Ver 0.7.5";// Version du programme
 #define LCDBEFOREOFF 20000          // Tempo en ms avant extinction écran
 #define LCDON true                  // Activation LCD
 #define LCDOFF false                // Désactivation LCD
+#define LCD_ADRESS 0x27             //Adresse I2C du LCD
 
 // Mise en service du buzzer
 #define BUZZERSTATE 1023            // Buzzer actif
@@ -376,7 +383,7 @@ void TestPause1000()
 
 //*** DECLARATIONS
 // Declaration de l'objet LCD connecte sur les broches A4/A5 de l'arduino
-LiquidCrystal_I2C lcd(0x3F, LCDLENGTH, LCDLINE);
+LiquidCrystal_I2C lcd(LCD_ADRESS, LCDLENGTH, LCDLINE);
 
 // ............................................................... //
 // .. Nom: LCD_Status(boolean State)                            .. //
