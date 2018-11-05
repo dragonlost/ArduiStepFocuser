@@ -31,7 +31,7 @@ https://easyeda.com/dragonlost/ArduiStepFocuser-05782649d5d647508e7d01ccf179df9b
 La liste des composants est sous forme de classeur XLSX (lisible par libreoffice) avec les references constructeurs ainsi que les références Digikey et Mouser.
 https://github.com/dragonlost/ArduiStepFocuser/raw/master/Documentations/BOM_ArduiStepFocuser.xlsx
 
-__Attention :__ La liste n'est pas identique au site, elle contient les jumper un deuxième modèle d'Arduino Nano ( choisir entre les 2 avant de commanter.
+__Attention :__ La liste n'est pas identique au site EASY-EDA, elle contient les jumper un deuxième modèle d'Arduino Nano ( choisir entre les 2 avant de commanter.
 La liste ne contient pas les 2 LED, le switch ON-ON et le driver moteur, à choisir par vous même.
 
 Le BOM marche sans aucune modification avec le revendeur [Mouser](https://www.mouser.fr/ProjectManager/ProjectDetail.aspx?AccessID=8962ca1cb3) et [Digi-Key](https://www.digikey.fr/short/j0r299)
@@ -51,8 +51,3 @@ https://www.youtube.com/watch?v=-dUdCSXep7k
 - master = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton analogique + fin de course).
 - master-TOR = branche principale (écran LCD20x04 + DS1820 + DRV8825 + buzzer + bouton numerique + fin de course).
 - dev = branche master en développement.
-- dev-oled = remplacement du LCD 20x04 par un écran OLED monochrome.
-- dev-oled+wemos = remplacement du LCD 20x04 par un écran OLED monochrome et remplecement de l'arduino Nano par un Wemos.
-- dev-html = dévellopement de la page html du Wemos.
-- dev-TMC2100 = branche Master avec DRV8825 remplacé par un driveur TMC2100.
-- dev-TMC2130 = branche Master avec DRV8825 remplacé par un driveur TMC2130-SPI.
