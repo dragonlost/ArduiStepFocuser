@@ -31,7 +31,7 @@ https://easyeda.com/dragonlost/ArduiStepFocuser-05782649d5d647508e7d01ccf179df9b
 La liste des composants est sous forme de classeur XLSX (lisible par libreoffice) avec les references constructeurs ainsi que les références Digikey et Mouser.
 https://github.com/dragonlost/ArduiStepFocuser/raw/master/Documentations/BOM_ArduiStepFocuser.xlsx
 
-__Attention :__ La liste n'est pas identique au site EASY-EDA, elle contient les jumper un deuxième modèle d'Arduino Nano ( choisir entre les 2 avant de commanter.
+__Attention :__ La liste n'est pas identique au site EASY-EDA, elle contient les jumper un deuxième modèle d'Arduino Nano ( choisir entre les 2 avant de commander, ou l'acheter une copie à coté).
 La liste ne contient pas les 2 LED, le switch ON-ON et le driver moteur, à choisir par vous même.
 
 Le BOM marche sans aucune modification avec le revendeur [Mouser](https://www.mouser.fr/ProjectManager/ProjectDetail.aspx?AccessID=8962ca1cb3) et [Digi-Key](https://www.digikey.fr/short/j0r299)
